@@ -1,3 +1,86 @@
+/* Header */
+.dynamic-island {
+  background: linear-gradient(145deg, #ffffff 0%, #f9f7f4 100%);
+  box-shadow: 0 8px 32px rgba(139, 69, 19, 0.08), 0 4px 8px rgba(160, 82, 45, 0.06);
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 3rem;
+  max-width: 900px;
+  width: 90%;
+  margin: 1rem auto;
+  position: relative;
+  min-height: 72px;
+  gap: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(218, 165, 32, 0.1);
+}
+
+.dynamic-island h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: #8b4513;
+  background: linear-gradient(135deg, #d2691e, #cd853f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dynamic-island form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Search Button Icon Style */
+.searchButton {
+  background: transparent;
+  color: #8b4513;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1.2rem;
+}
+.searchButton:hover {
+  color: #ff6b6b;
+  transform: scale(1.1);
+  background: rgba(255, 107, 107, 0.1);
+}
+.searchButton i {
+  font-size: 1.2rem;
+}
+
+/* Adjust search box for island */
+.searchBox {
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  border: 2px solid #ddb892;
+  outline: none;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  min-width: 250px;
+  background: rgba(255, 248, 240, 0.9);
+  color: #5d4037;
+  transition: all 0.2s ease;
+}
+
+.searchBox:focus {
+  border-color: #ff6b6b;
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+  background: #fff;
+}
+
+.searchBox::placeholder {
+  color: #a0755b;
+}
 *{
     margin: 0;
     padding: 0;
@@ -5,14 +88,15 @@
     font-family: verdana, Geneva, Tahoma, sans-serif;
 }
 body{
-    background-color: #3f08077c;
-    color: #f1ecec;
+    background: linear-gradient(135deg, #f8f6f0 0%, #e8e3d3 100%);
+    color: #2c3e50;
+    min-height: 100vh;
 }
 header nav{
-    background-color : #050505;
-    padding: 20px;
-    display : flex;
-    justify-content: space-between;
+    background-color: transparent;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
     align-items: center;
     z-index: 1;
 }
@@ -46,58 +130,183 @@ form button[type="submit"]{
 
 }
 form button[type="submit"]:hover, .recipe button:hover,.recipe-close-button:hover{
-    background-color: #67a2cf;
+    transform: translateY(-2px);
 }
 /* main section */
 .recipe-container {
     text-align: center;
-    margin-top: 20px ;
+    margin-top: 40px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
     width: 80%;
-    margin: 10px auto;
-     padding: 20px; 
-     place-items: center;
+    margin: 40px auto;
+    padding: 20px;
+    place-items: center;
+}
+
+.recipe-container h2 {
+    color: #8b4513;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+    grid-column: 1 / -1;
 }
 .recipe{
-    background-color:rgb(242, 235, 235) ;
+    background: linear-gradient(145deg, #ffffff 0%, #faf8f5 100%);
     display: flex;
     flex-direction: column;
-    color:#1d1b1b;
-    border-radius: 6px;
-    box-shadow: 0 5px 10px rgba(78, 73,73, 0.1),-5px -5px 10px rgba(34, 34, 34, 0.5);
-    cursor :pointer;
-    max-width: 350px;
-    transition: transform 0.3 ease-in-out;
+    color: #2c3e50;
+    border-radius: 24px;
+    box-shadow: 0 12px 40px rgba(139, 69, 19, 0.1), 0 6px 20px rgba(160, 82, 45, 0.08);
+    cursor: pointer;
+    max-width: 380px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid rgba(221, 184, 146, 0.15);
+    overflow: hidden;
+    position: relative;
+    backdrop-filter: blur(10px);
 }
-.recipe:hover{
-    transform: scale(1.03);
 
+.recipe::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ff6b6b, #4caf50, #ff9500, #ee5a24);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.recipe:hover::before {
+    opacity: 1;
+}
+
+.recipe:hover{
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 25px 60px rgba(139, 69, 19, 0.15), 0 10px 30px rgba(160, 82, 45, 0.12);
+    border-color: rgba(221, 184, 146, 0.3);
 }
 .recipe img{
-    height: 300px;
+    height: 280px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0;
+    transition: transform 0.4s ease;
 }
+
+.recipe:hover img {
+    transform: scale(1.05);
+}
+
+.recipe-content {
+    padding: 20px 24px 24px 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
 .recipe h3{
-    font-size: 24px;
-    margin-block:5px ;
-    
+    font-size: 26px;
+    margin: 0 0 12px 0;
+    color: #8b4513;
+    font-weight: 700;
+    line-height: 1.3;
+    background: linear-gradient(135deg, #8b4513, #cd853f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
+
 .recipe p{
-    font-size: 20px;
-    color: #4a4a4a;
-    margin: 5px 0;
+    font-size: 16px;
+    color: #6d4c41;
+    margin: 0 0 20px 0;
+    line-height: 1.6;
+    flex-grow: 1;
+    opacity: 0.8;
+}
+
+.recipe-tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.recipe-tag {
+    background: rgba(255, 107, 107, 0.1);
+    color: #d63031;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.recipe-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 12px 0;
+    border-top: 1px solid rgba(221, 184, 146, 0.2);
+    border-bottom: 1px solid rgba(221, 184, 146, 0.2);
+}
+
+.recipe-time, .recipe-difficulty {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: #8b4513;
+    font-weight: 600;
+}
+
+.recipe-time i, .recipe-difficulty i {
+    font-size: 16px;
+    color: #ff6b6b;
 }
 .recipe button{
-    font-size: 20px;
-    font-weight: 600;
-    padding: 10px;
-    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 14px 28px;
+    border-radius: 30px;
     border: none;
     cursor: pointer;
-    margin: 18px auto;
-    background-color: #6c59d6;
-    color: #f1ecec;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #4caf50, #66bb6a);
+    color: #fff;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.recipe button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.recipe button:hover::before {
+    left: 100%;
+}
+
+.recipe button:hover {
+    background: linear-gradient(135deg, #388e3c, #4caf50);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(76, 175, 80, 0.4);
 }
 /* Recipe details */
 .recipe-details{
@@ -107,75 +316,89 @@ form button[type="submit"]:hover, .recipe button:hover,.recipe-close-button:hove
     left: 50%;
     transform: translate(-50%,-50%);
     -webkit-transform:translate(-50%,-50%);
-    background-color:#566c2f;
-    border-radius: 12px;
+    background: linear-gradient(145deg, #ffffff 0%, #faf8f5 100%);
+    border-radius: 20px;
     width: 40%;
     height: 60%;
-    font-size: 20px;
+    font-size: 18px;
     transition: all 0.5s ease-in-out;
     overflow-y: scroll;
-
+    box-shadow: 0 20px 60px rgba(139, 69, 19, 0.15), 0 8px 25px rgba(160, 82, 45, 0.1);
+    border: 1px solid rgba(221, 184, 146, 0.3);
 }
 .recipe-details-content{
     padding: 30px;
+    color: #2c3e50;
 }
 .recipeName{
     text-align: center;
     text-transform: uppercase;
-    text-decoration:underline;
+    text-decoration: underline;
     margin-bottom: 20px;
+    color: #8b4513;
+    font-weight: 700;
 }
 .IngredientList li{
     margin-top: 10px;
     margin-left: 20px;
     margin-bottom: 20px;
+    color: #5d4037;
+    line-height: 1.5;
 }
 .recipeInstructions p{
-    line-height: 30px;
+    line-height: 1.6;
     white-space: pre-line;
     margin-bottom: 20px;
+    color: #37474f;
 }
 .recipe-close-button{
     border: none;
     font-size: 18px;
     padding: 10px;
-    border-radius: 4px;
-    background-color: #6c59d6;
-    color: #f1ecec;
-    position:absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: #fff;
+    position: absolute;
     top: 20px;
     right: 20px;
-    width: 30px;
-    height:30px;
-    display:flex;
-    justify-self: center;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
     align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(238, 90, 36, 0.3);
+}
 
-    
-
+.recipe-close-button:hover {
+    background: linear-gradient(135deg, #ee5a24, #d63031);
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(238, 90, 36, 0.4);
 }
 /* Adding scrollbar to recipe details popup */
 .recipe-details::-webkit-scrollbar{
-    width: 10px;
+    width: 8px;
 }
 .recipe-details::-webkit-scrollbar-thumb{
-    background: #242222;
-    border-radius: 16px;
-    --webkit-border-radius:16px
-
+    background: linear-gradient(135deg, #ddb892, #cd853f);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+.recipe-details::-webkit-scrollbar-track{
+    background: rgba(221, 184, 146, 0.1);
+    border-radius: 10px;
 }
 
- body::-webkit-scrollbar{
-    width: 16px;
+body::-webkit-scrollbar{
+    width: 12px;
 }
 body::-webkit-scrollbar-thumb{
-    background: #343333;
-
+    background: linear-gradient(135deg, #ddb892, #cd853f);
+    border-radius: 10px;
 }
 body::-webkit-scrollbar-track{
-    background: #e4dfdf;
-    
-
+    background: rgba(232, 227, 211, 0.5);
 } 
 
 /* Responsive code */
